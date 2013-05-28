@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>default</key>
+	<array>
+		<dict>
+			<key>localizedName</key>
+			<string>PX680 Color</string>
+			<key>identifier</key>
+			<string>ipxcolor</string>
+			<key>exposureTimeInSeconds</key>
+			<string>0.46</string>
+		</dict>
+		<dict>
+			<key>localizedName</key>
+			<string>PX600 B&amp;W</string>
+			<key>identifier</key>
+			<string>ipxbw</string>
+			<key>exposureTimeInSeconds</key>
+			<string>0.36</string>
+		</dict>
+	</array>
+	<key>iPhone4</key>
+	<array>
+		<dict>
+			<key>localizedName</key>
+			<string>PX680 Color</string>
+			<key>identifier</key>
+			<string>ipxcolor</string>
+			<key>exposureTimeInSeconds</key>
+			<string>0.44</string>
+		</dict>
+		<dict>
+			<key>localizedName</key>
+			<string>PX600 B&amp;W</string>
+			<key>identifier</key>
+			<string>ipxbw</string>
+			<key>exposureTimeInSeconds</key>
+			<string>0.36</string>
+		</dict>
+	</array>
+	<key>iPhone5</key>
+	<array>
+		<dict>
+			<key>localizedName</key>
+			<string>PX680 Color</string>
+			<key>identifier</key>
+			<string>ipxcolor</string>
+			<key>exposureTimeInSeconds</key>
+			<string>0.42</string>
+		</dict>
+		<dict>
+			<key>localizedName</key>
+			<string>PX600 B&amp;W</string>
+			<key>identifier</key>
+			<string>ipxbw</string>
+			<key>exposureTimeInSeconds</key>
+			<string>0.36</string>
+		</dict>
+	</array>
+</dict>
+</plist>
