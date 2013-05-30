@@ -10,13 +10,13 @@ This framework only runs on **iPhone** and **iPod touch** with **iOS 6** and lat
 - Integrate the framework into your project via cocoa pods by adding the following line into you Podfile.
 
     ```
-    pod 'IPInstantLab'
+    pod 'InstantLab'
     ```
 
 - Import the header.
 
     ```objective-c
-    #import <IPInstantLab/IPInstantLab.h>
+    #import <InstantLab/InstantLab.h>
     ```
 
 - Present the Instant Lab with your image.

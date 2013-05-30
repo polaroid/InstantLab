@@ -105,7 +105,7 @@
 		F69805221754AA27007582DC /* IPDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F69805211754AA27007582DC /* IPDemoViewController.m */; };
 		F69805251754ABDA007582DC /* instantlab_icon-close_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = F69805231754ABD8007582DC /* instantlab_icon-close_inactive.png */; };
 		F69805261754ABDA007582DC /* instantlab_icon-close_inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F69805241754ABD9007582DC /* instantlab_icon-close_inactive@2x.png */; };
-		F69805291754BB77007582DC /* IPInstantLab.m in Sources */ = {isa = PBXBuildFile; fileRef = F69805281754BB77007582DC /* IPInstantLab.m */; };
+		F69805291754BB77007582DC /* InstantLab.m in Sources */ = {isa = PBXBuildFile; fileRef = F69805281754BB77007582DC /* InstantLab.m */; };
 		F698052D1754CD44007582DC /* NXImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F698052C1754CD44007582DC /* NXImage.m */; };
 		F69805301754CE11007582DC /* UIColor_NXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F698052F1754CE11007582DC /* UIColor_NXKit.m */; };
 		F69805331754CE27007582DC /* UIView+NXKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F69805321754CE27007582DC /* UIView+NXKit.m */; };
@@ -262,8 +262,8 @@
 		F69805211754AA27007582DC /* IPDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IPDemoViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F69805231754ABD8007582DC /* instantlab_icon-close_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instantlab_icon-close_inactive.png"; sourceTree = "<group>"; };
 		F69805241754ABD9007582DC /* instantlab_icon-close_inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instantlab_icon-close_inactive@2x.png"; sourceTree = "<group>"; };
-		F69805271754BB77007582DC /* IPInstantLab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IPInstantLab.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F69805281754BB77007582DC /* IPInstantLab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IPInstantLab.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		F69805271754BB77007582DC /* InstantLab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = InstantLab.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		F69805281754BB77007582DC /* InstantLab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = InstantLab.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F698052B1754CD44007582DC /* NXImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXImage.h; sourceTree = "<group>"; };
 		F698052C1754CD44007582DC /* NXImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXImage.m; sourceTree = "<group>"; };
 		F698052E1754CE11007582DC /* UIColor_NXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_NXKit.h; sourceTree = "<group>"; };
@@ -358,8 +358,8 @@
 		F603AE6E1753A857000E1A5E /* IPInstantLab */ = {
 			isa = PBXGroup;
 			children = (
-				F69805271754BB77007582DC /* IPInstantLab.h */,
-				F69805281754BB77007582DC /* IPInstantLab.m */,
+				F69805271754BB77007582DC /* InstantLab.h */,
+				F69805281754BB77007582DC /* InstantLab.m */,
 				F698052A1754C04C007582DC /* IPInstantLab */,
 				F698053D1754CF48007582DC /* NXKit */,
 				F603AEDE1753B4B4000E1A5E /* Resources */,
@@ -882,7 +882,7 @@
 				F69804DF17549592007582DC /* IPShutterView.m in Sources */,
 				F698051217549703007582DC /* IPNavigationController.m in Sources */,
 				F69805221754AA27007582DC /* IPDemoViewController.m in Sources */,
-				F69805291754BB77007582DC /* IPInstantLab.m in Sources */,
+				F69805291754BB77007582DC /* InstantLab.m in Sources */,
 				F698052D1754CD44007582DC /* NXImage.m in Sources */,
 				F69805301754CE11007582DC /* UIColor_NXKit.m in Sources */,
 				F69805331754CE27007582DC /* UIView+NXKit.m in Sources */,

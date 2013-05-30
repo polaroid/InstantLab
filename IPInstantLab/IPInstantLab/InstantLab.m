@@ -20,7 +20,7 @@
 
 
 
-#import "IPInstantLab.h"
+#import "InstantLab.h"
 
 @implementation IPInstantLab
 
