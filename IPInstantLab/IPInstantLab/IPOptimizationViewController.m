@@ -1,17 +1,19 @@
 //
 //  IPFilterViewController.m
-//  Impossible
+//  IPInstantLab
 //
 //  Created by Ullrich Schäfer on 13.03.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
 #import <WCAlertView/WCAlertView.h>
 
 #import "UIView+NXKit.h"
-#import "NXLayoutConstraintHelpers.h"
 
+#import "ALAssetsLibrary+Impossible.h"
+
+#import "NXLayoutConstraintHelpers.h"
 #import "IPConstants.h"
 #import "IPFilmTypeController.h"
 #import "UIView+ImpossibleProject.h"
@@ -98,14 +100,14 @@
         _decimalFormatter = [[NSNumberFormatter alloc] init];
         _decimalFormatter.numberStyle = NSNumberFormatterDecimalStyle;
         _decimalFormatter.usesGroupingSeparator = NO;
-
+        
         self.image = image;
         self.title = NSLocalizedString(@"Choose Film", @"Optimization View Controller title");
         
         self.navigationItem.rightBarButtonItem = [IPBarButtonItem barButtonItemForPosition:IPBarButtonItemPositionRight
                                                                                  withImage:[UIImage imageNamed:@"instantlab_icon-advanced_inactive"]
-                                                                                  target:self
-                                                                                selector:@selector(toggleAdvancedSettingsView:)];
+                                                                                    target:self
+                                                                                  selector:@selector(toggleAdvancedSettingsView:)];
     }
     return self;
 }
@@ -134,7 +136,7 @@
         
         [self.filmTypeDisplayView contraintFromHeight];
         [self.filmTypeDisplayView contraintFromWidth];
-
+        
         [_filmSelectionButton addConstraint:[NSLayoutConstraint constraintWithItem:self.filmTypeDisplayView
                                                                          attribute:NSLayoutAttributeCenterX
                                                                          relatedBy:NSLayoutRelationEqual
@@ -149,15 +151,15 @@
                                                                          attribute:NSLayoutAttributeCenterY
                                                                         multiplier:1.0
                                                                           constant:0.0]];
-
+        
         [_filmSelectionButton addSubview:self.filmTypeDisplayView];
         
         [_filmSelectionButton addTarget:self
                                  action:@selector(toggleFilmSelectorTable:)
                        forControlEvents:UIControlEventTouchUpInside];
         
-        self.filmTypeLabel.font = [UIFont ip_boldFontOfSize:14.0];
-        self.exposureTimeLabel.font = [UIFont ip_boldFontOfSize:14.0];
+        (self.filmTypeLabel.font =
+         self.exposureTimeLabel.font = [UIFont ip_exposureFilmTypeLabelFont]);
     }
     
     return _filmSelectionButton;
@@ -214,7 +216,7 @@
                                                   animated:YES];
     }];
     self.calibrateRecognizer.numberOfTapsRequired = 2;
-
+    
     self.photoFrameView = [[IPPhotoFrameView alloc] initWithStyle:IPPhotoViewStyleOpaqueBar];
     self.photoFrameView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.photoFrameView];
@@ -222,11 +224,11 @@
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.photoFrameView.contentView = self.imageView;
-
-//    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-//    self.spinner.hidesWhenStopped = YES;
-//    [self.spinner stopAnimating];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.spinner];
+    
+    //    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    //    self.spinner.hidesWhenStopped = YES;
+    //    [self.spinner stopAnimating];
+    //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.spinner];
     
     self.advancedSettingsView = [[NSBundle mainBundle] loadNibNamed:@"ImageSettingsPanel" owner:self options:nil][0];
     [self.advancedSettingsView contraintFromWidth];
@@ -247,17 +249,17 @@
     self.continueButton = [IPButton button];
     self.continueButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.continueButton setImage:[UIImage imageNamed:@"instantlab_icon-accept_inactive"]
-                                 forState:UIControlStateNormal];
+                         forState:UIControlStateNormal];
     [self.continueButton addTarget:self
-                                    action:@selector(next:)
-                          forControlEvents:UIControlEventTouchUpInside];
+                            action:@selector(next:)
+                  forControlEvents:UIControlEventTouchUpInside];
     [self.controlContainer addSubview:self.continueButton];
     
     
     [self updateImageView];
     
     
-
+    
     // layout main views
     [self.view nx_addVisualConstraints:(@[
                                         @"H:|[photoFrameView]|",
@@ -279,7 +281,7 @@
     [self.continueButton addConstraintWhere:[self.continueButton constraintItemAttribute:NSLayoutAttributeWidth]
                             shouldBeEqualTo:[self.continueButton constraintItemAttribute:NSLayoutAttributeHeight]];
     
-
+    
     // advanced settings
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[advancedSettings]|"
                                                                       options:NSLayoutFormatAlignAllCenterY
@@ -295,7 +297,7 @@
         slider.continuous = YES;
         [slider addTarget:self action:@selector(processImage:forEvent:) forControlEvents:UIControlEventValueChanged | UIControlEventTouchDown];
     }];
-
+    
     [self processImage:nil forEvent:nil];
 }
 
@@ -309,7 +311,7 @@
 - (UIImage *)continueImage;
 {
     if (self.imageProcessed) return self.imageProcessed;
-
+    
     return self.image;
 }
 
@@ -342,9 +344,10 @@
         cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"instantlab_screen4c_film-background_inactive"]];
         cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"instantlab_screen4c_film-background_active"]];
         cell.textLabel.backgroundColor = cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-        cell.textLabel.font = cell.detailTextLabel.font = [UIFont ip_boldFontOfSize:18.0];
+        (cell.textLabel.font =
+         cell.detailTextLabel.font = [UIFont ip_exposureFilmTypeCellFont]);
     }
-
+    
     NSString *label = nil;
     double exposureTimeInSeconds = 0;
     BOOL selected = NO;
@@ -359,8 +362,9 @@
         
     } else if (indexPath.section == 1) {
         label = NSLocalizedString(@"Custom", @"Custom exposure time menu entry");
-
+        
         exposureTimeInSeconds = [IPFilmTypeController sharedController].customExposureTime;
+        selected = ([IPFilmTypeController sharedController].selectedFilm == nil);
     }
     
     cell.textLabel.text = label;
@@ -376,7 +380,7 @@
     } else {
         cell.textLabel.textColor = cell.detailTextLabel.textColor = [UIColor ip_textColor];
     }
-
+    
     return cell;
 }
 
@@ -407,6 +411,7 @@
                                                   otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
         alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
         UITextField *inputField = [alertView textFieldAtIndex:0];
+        inputField.font = [UIFont ip_alertInputFont];
         inputField.keyboardType = UIKeyboardTypeNumberPad;
         
         if ([IPFilmTypeController sharedController].customExposureTime) {
@@ -464,8 +469,6 @@
     
     [self.view insertSubview:self.filmSelectorTable belowSubview:self.controlContainer];
     
-    NSDictionary *views = @{ @"filmSelectorTable": self.filmSelectorTable };
-    
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.filmSelectorTable
                                                           attribute:NSLayoutAttributeCenterX
                                                           relatedBy:NSLayoutRelationEqual
@@ -474,11 +477,9 @@
                                                          multiplier:1.0
                                                            constant:0.0]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[filmSelectorTable(==188)]"
-                                                                      options:0
-                                                                      metrics:nil
-                                                                        views:views]];
-
+    [self.view addConstraintWhere:[NXConstraintItemAttribute constraintItemAttributeForItem:self.filmSelectorTable withAttribute:NSLayoutAttributeWidth multiplier:1 constant:0]
+                  shouldBeEqualTo:[NXConstraintItemAttribute constraintItemAttributeForItem:self.filmSelectionButton withAttribute:NSLayoutAttributeWidth multiplier:0.985 constant:0]];
+    
     [self.filmSelectorTable addConstraint:[NSLayoutConstraint constraintWithItem:self.filmSelectorTable
                                                                        attribute:NSLayoutAttributeHeight
                                                                        relatedBy:NSLayoutRelationEqual
@@ -486,7 +487,7 @@
                                                                        attribute:NSLayoutAttributeHeight
                                                                       multiplier:1.0
                                                                         constant:132.0]];
-
+    
     self.filmSelectorTableHidden = YES;
 }
 
@@ -529,8 +530,8 @@
                          [self.view removeConstraint:self.advancedSettingsViewVerticalPosition];
                          
                          self.advancedSettingsViewVerticalPosition =
-                              [NSLayoutConstraint constraintWhere:[self.advancedSettingsView constraintItemAttribute:(advancedSettingsViewHidden ? NSLayoutAttributeBottom : NSLayoutAttributeTop)]
-                                                  shouldBeEqualTo:[self.photoFrameView constraintItemAttribute:NSLayoutAttributeTop]];
+                         [NSLayoutConstraint constraintWhere:[self.advancedSettingsView constraintItemAttribute:(advancedSettingsViewHidden ? NSLayoutAttributeBottom : NSLayoutAttributeTop)]
+                                             shouldBeEqualTo:[self.photoFrameView constraintItemAttribute:NSLayoutAttributeTop]];
                          [self.view addConstraint:self.advancedSettingsViewVerticalPosition];
                          self.advancedSettingsView.alpha = (advancedSettingsViewHidden ? 0.0 : 1.0);
                          [self.view layoutIfNeeded];
@@ -576,7 +577,7 @@
     _filmSelectorTableHidden = filmSelectorTableHidden;
     
     [self.view layoutIfNeeded];
-
+    
     [UIView animateWithDuration:(animated ? 0.2 : 0.0)
                      animations:^{
                          [self.view removeConstraint:self.filmSelectorTableVerticalPosition];
@@ -603,6 +604,8 @@
     self.gammaSlider.value = 0.0;
     self.hueSlider.value = 0.0;
     self.imageProcessed = nil;
+    
+    [self.processingQueue cancelAllOperations];
 }
 
 - (void)updateImageView
@@ -625,7 +628,7 @@
         self.opetationPending = YES;
         return;
     }
-        
+    
     float contrastAdjust = self.contrastSlider.value;
     float gammaAdjust = self.gammaSlider.value;
     float hueAdjust = self.hueSlider.value;
@@ -659,7 +662,7 @@
             [self updateImageView];
         });
     }];
-
+    
 }
 
 - (void)updateFilmTypeLabel:(NSNotification *)notification;
@@ -686,10 +689,30 @@
     UIImage *image = self.imageProcessed;
     if (!image) image = self.image;
     
-    IPExposureViewController *exposureViewController = [[IPExposureViewController alloc] initWithImage:image
-                                                                                          exposureTime:[IPFilmTypeController sharedController].selectedExposureTime
-                                                                                        filmIdentifier:[IPFilmTypeController sharedController].selectedFilmIdentifier];
-    [self.navigationController pushViewController:exposureViewController animated:YES];
+    void (^continueBlock)() = ^{
+        IPExposureViewController *exposureViewController = [[IPExposureViewController alloc] initWithImage:image
+                                                                                              exposureTime:[IPFilmTypeController sharedController].selectedExposureTime
+                                                                                            filmIdentifier:[IPFilmTypeController sharedController].selectedFilmIdentifier];
+        [self.navigationController pushViewController:exposureViewController animated:YES];
+    };
+    
+    
+    [[[ALAssetsLibrary alloc] init] ip_saveImage:image
+                                         toAlbum:IPAlbumName_InstantLab
+                             withCompletionBlock:^(NSError *error) {
+                                 if (error) {
+                                     [WCAlertView showAlertWithTitle:NSLocalizedString(@"Error saving image", nil)
+                                                             message:NSLocalizedString(@"There was a problem saving your image to the camera roll. We're sorry about that.", nil)
+                                                  customizationBlock:nil
+                                                     completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
+                                                         continueBlock();
+                                                     }
+                                                   cancelButtonTitle:NSLocalizedString(@"Close", nil)
+                                                   otherButtonTitles:nil];
+                                     return;
+                                 }
+                                 continueBlock();
+                             }];
 }
 
 #pragma mark Filters

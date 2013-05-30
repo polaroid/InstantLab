@@ -1,9 +1,9 @@
 //
 //  IPResetButton.m
-//  Impossible
+//  IPInstantLab
 //
 //  Created by Max Winde on 29.04.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #import "UIColor+ImpossibleProject.h"
@@ -20,7 +20,7 @@
         UIEdgeInsets edgeInsets = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0);
         [self setTitleColor:[UIColor ip_textColor] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor ip_textColor] forState:UIControlStateHighlighted];
-        self.titleLabel.font = [UIFont ip_boldFontOfSize:15.0];
+        self.titleLabel.font = [UIFont ip_exposureOptimizeResetButtonFont];
         [self setBackgroundImage:[[UIImage imageNamed:@"instantlab_screen4b_button-reset"] resizableImageWithCapInsets:edgeInsets]
                         forState:UIControlStateNormal];
         [self setBackgroundImage:[[UIImage imageNamed:@"instantlab_screen4b_button-reset_active"] resizableImageWithCapInsets:edgeInsets]

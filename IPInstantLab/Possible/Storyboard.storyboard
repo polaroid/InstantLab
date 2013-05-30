@@ -19,7 +19,7 @@
             </objects>
             <point key="canvasLocation" x="-354" y="403"/>
         </scene>
-        <!--Demo View Controller-->
+        <!--Demo View Controller - Possible-->
         <scene sceneID="R9K-NJ-vEf">
             <objects>
                 <viewController id="bQP-Ez-y5e" customClass="IPDemoViewController" sceneMemberID="viewController">
@@ -27,10 +27,15 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZw-XJ-IH9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="test.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7rO-Ou-sjy"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZw-XJ-IH9">
+                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="0.78000000000000003" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="dzH-bS-tDx"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Expose">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Expose Image">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -40,11 +45,36 @@
                                     <action selector="expose:" destination="bQP-Ez-y5e" eventType="touchUpInside" id="S29-fl-RVY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiT-ws-opr">
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.78000000000000003" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="aVy-J4-wqc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Crop &amp; Expose Image">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cropAndExpose:" destination="bQP-Ez-y5e" eventType="touchUpInside" id="kKe-ek-XSQ"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.89255839646464641" green="0.89255839646464641" blue="0.89255839646464641" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="YZw-XJ-IH9" secondAttribute="centerY" type="user" id="BbK-dm-wge"/>
-                            <constraint firstAttribute="centerX" secondItem="YZw-XJ-IH9" secondAttribute="centerX" type="user" id="bWg-Sw-Ij4"/>
+                            <constraint firstItem="YZw-XJ-IH9" firstAttribute="top" secondItem="uiT-ws-opr" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="1fZ-ct-zyx"/>
+                            <constraint firstItem="uiT-ws-opr" firstAttribute="leading" secondItem="xOw-bk-gYn" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="1mU-X0-07l"/>
+                            <constraint firstItem="7rO-Ou-sjy" firstAttribute="bottom" secondItem="xOw-bk-gYn" secondAttribute="bottom" type="default" id="EsY-s8-PYt"/>
+                            <constraint firstAttribute="bottom" secondItem="YZw-XJ-IH9" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Fg2-B7-HGT"/>
+                            <constraint firstAttribute="trailing" secondItem="uiT-ws-opr" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="GCR-Wm-Ik2"/>
+                            <constraint firstItem="YZw-XJ-IH9" firstAttribute="leading" secondItem="xOw-bk-gYn" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="SUV-D1-DNs"/>
+                            <constraint firstItem="7rO-Ou-sjy" firstAttribute="leading" secondItem="xOw-bk-gYn" secondAttribute="leading" type="default" id="YsI-vU-Tbf"/>
+                            <constraint firstItem="7rO-Ou-sjy" firstAttribute="top" secondItem="xOw-bk-gYn" secondAttribute="top" type="default" id="a40-sn-Iu2"/>
+                            <constraint firstItem="7rO-Ou-sjy" firstAttribute="trailing" secondItem="xOw-bk-gYn" secondAttribute="trailing" type="default" id="ixk-UK-TpV"/>
+                            <constraint firstAttribute="trailing" secondItem="YZw-XJ-IH9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="q9U-O5-SwI"/>
                         </constraints>
                     </view>
                     <toolbarItems>
@@ -52,7 +82,7 @@
                         <barButtonItem systemItem="camera" id="115-AS-flg"/>
                         <barButtonItem systemItem="search" id="ihL-TS-AmD"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="NcT-z6-Y13"/>
+                    <navigationItem key="navigationItem" title="Possible" id="NcT-z6-Y13"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -61,10 +91,14 @@
             <point key="canvasLocation" x="124" y="403"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="test.jpg" width="512" height="619"/>
+    </resources>
     <classes>
         <class className="IPDemoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IPDemoViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cropAndExpose:"/>
                 <relationship kind="action" name="expose:"/>
             </relationships>
         </class>

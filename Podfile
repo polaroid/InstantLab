@@ -4,3 +4,4 @@ link_with 'Possible'
 
 pod 'BlocksKit'
 pod 'WCAlertView'
+pod 'ObjcAssociatedObjectHelpers'

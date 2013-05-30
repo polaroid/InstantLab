@@ -1,9 +1,9 @@
 //
 //  IPButton.m
-//  Impossible
+//  IPInstantLab
 //
 //  Created by Max Winde on 16.04.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #import "UIFont+ImpossibleProject.h"
@@ -18,6 +18,19 @@ static const UIEdgeInsets edgeInsets = (UIEdgeInsets){4.0, 4.0, 4.0, 4.0};
 + (IPButton *)button;
 {
     return [[IPButton alloc] initWithFrame:CGRectZero];
+}
+
++ (IPButton *)buttonWithGrayColor
+{
+    IPButton *button = [self button];
+    [button setBackgroundImage:[[UIImage imageNamed:@"login_register-button_resize_inactive"] resizableImageWithCapInsets:edgeInsets
+                                                                                                             resizingMode:UIImageResizingModeStretch]
+                      forState:UIControlStateNormal];
+    [button setBackgroundImage:[[UIImage imageNamed:@"login_register-button_resize_active"] resizableImageWithCapInsets:edgeInsets
+                                                                                                           resizingMode:UIImageResizingModeStretch]
+                      forState:UIControlStateHighlighted];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    return button;
 }
 
 + (IPButton *)buttonWithRedColor;
@@ -50,7 +63,7 @@ static const UIEdgeInsets edgeInsets = (UIEdgeInsets){4.0, 4.0, 4.0, 4.0};
         [self setBackgroundImage:[[UIImage imageNamed:@"instantlab_button_resize_selected"] resizableImageWithCapInsets:edgeInsets
                                                                                                            resizingMode:UIImageResizingModeStretch]
                         forState:UIControlStateSelected];
-        self.titleLabel.font = [UIFont ip_boldFontOfSize:15.0];
+        self.titleLabel.font = [UIFont ip_buttonTitleFont];
         self.titleEdgeInsets = UIEdgeInsetsMake(3.0, 0.0, 0.0, 0.0);
         self.changeAlphaOnHighlight = YES;
     }
@@ -61,7 +74,7 @@ static const UIEdgeInsets edgeInsets = (UIEdgeInsets){4.0, 4.0, 4.0, 4.0};
 - (void)setHighlighted:(BOOL)highlighted;
 {
     [super setHighlighted:highlighted];
-
+    
     if (!self.changeAlphaOnHighlight) return;
     
     CGFloat alpha = (highlighted ? 0.4 : 1.0);

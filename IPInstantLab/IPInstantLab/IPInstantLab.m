@@ -3,7 +3,7 @@
 //  IPInstantLab
 //
 //  Created by Tobias Kräntzer on 28.05.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #import "NXImage.h"
@@ -11,6 +11,8 @@
 #import "IPConstants.h"
 
 #import "IPImageCropperViewController.h"
+#import "IPOptimizationViewController.h"
+
 #import "IPNavigationController.h"
 #import "IPAppereance.h"
 
@@ -43,20 +45,38 @@
 
 + (void)presentInstantLabWithImage:(UIImage *)anImage
 {
+    [self presentInstantLabWithImage:anImage skipCropping:NO];
+}
+
++ (void)presentInstantLabWithImage:(UIImage *)anImage skipCropping:(BOOL)skipCropping;
+{
     [IPAppereance loadAppereance];
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     UIViewController *rootViewController = [window rootViewController];
-
     
-    IPImageCropperViewController *cropperViewController = [[IPImageCropperViewController alloc] initWithImage:[anImage nx_imageByRotatingToStandard]];
-    cropperViewController.navigationItem.leftBarButtonItem = [IPBarButtonItem barButtonItemForPosition:IPBarButtonItemPositionLeft
-                                                                                             withImage:[UIImage imageNamed:@"instantlab_icon-close_inactive"]
-                                                                                               handler:^(id sender) {
-                                                                                                   [rootViewController dismissViewControllerAnimated:YES completion:^{ }];
-                                                                                               }];
     
-    [rootViewController presentViewController:[[IPNavigationController alloc] initWithRootViewController:cropperViewController]
+    IPNavigationController *navigationController = nil;
+    
+    if (skipCropping) {
+        IPOptimizationViewController *optimizationViewController = [[IPOptimizationViewController alloc] initWithImage:[anImage nx_imageByRotatingToStandard]];
+        optimizationViewController.navigationItem.leftBarButtonItem = [IPBarButtonItem barButtonItemForPosition:IPBarButtonItemPositionLeft
+                                                                                                 withImage:[UIImage imageNamed:@"instantlab_icon-close_inactive"]
+                                                                                                   handler:^(id sender) {
+                                                                                                       [rootViewController dismissViewControllerAnimated:YES completion:^{ }];
+                                                                                                   }];
+        navigationController = [[IPNavigationController alloc] initWithRootViewController:optimizationViewController];
+    } else {
+        IPImageCropperViewController *cropperViewController = [[IPImageCropperViewController alloc] initWithImage:[anImage nx_imageByRotatingToStandard]];
+        cropperViewController.navigationItem.leftBarButtonItem = [IPBarButtonItem barButtonItemForPosition:IPBarButtonItemPositionLeft
+                                                                                                 withImage:[UIImage imageNamed:@"instantlab_icon-close_inactive"]
+                                                                                                   handler:^(id sender) {
+                                                                                                       [rootViewController dismissViewControllerAnimated:YES completion:^{ }];
+                                                                                                   }];
+        navigationController = [[IPNavigationController alloc] initWithRootViewController:cropperViewController];
+    }
+    
+    [rootViewController presentViewController:navigationController
                                      animated:YES
                                    completion:^{
                                        

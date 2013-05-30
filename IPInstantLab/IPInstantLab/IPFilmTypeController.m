@@ -1,9 +1,9 @@
 //
 //  IPFilmTypeController.m
-//  Impossible
+//  IPInstantLab
 //
 //  Created by Max Winde on 23.04.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #import <BlocksKit/BlocksKit.h>

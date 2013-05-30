@@ -1,11 +1,12 @@
 //
 //  IPExposureViewController.m
-//  Impossible
+//  IPInstantLab
 //
 //  Created by Ullrich Schäfer on 15.03.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
+#import <WCAlertView/WCAlertView.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreGraphics/CoreGraphics.h>
@@ -60,6 +61,7 @@
               \_/
  */
 
+
 typedef NS_ENUM(NSInteger, IPExposureState) {
     IPExposureStateInstructions,
     IPExposureStateFaceDown,
@@ -92,6 +94,9 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
 @property (assign) BOOL isFaceDown;
 
 @property (strong) AVAudioPlayer *shutterPlayer;
+@property (strong) AVAudioPlayer *beepPlayer;
+
+@property (assign) BOOL isFlashOn;
 
 - (void)updateWithAttitude:(CMAttitude *)attitude;
 
@@ -103,8 +108,8 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
 
 - (void)toggleFlash:(BOOL)onOff fullBrightness:(BOOL)fullBrightness;
 
-- (void)next;
-
+- (void)cancel;
+- (void)done;
 @end
 
 
@@ -135,9 +140,15 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
         [session setActive:YES error:&err];
         
         // http://www.soundjay.com/camera-sound-effect.html
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"camera-shutter-click-08" ofType:@"wav"];
-        self.shutterPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:&err];
+        NSString *shutterPath = [[NSBundle mainBundle] pathForResource:@"camera-shutter-click-08" ofType:@"wav"];
+        self.shutterPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:shutterPath] error:&err];
         [self.shutterPlayer prepareToPlay];
+        
+        // http://www.soundjay.com/beep-sounds-1.html
+        NSString *beepPath = [[NSBundle mainBundle] pathForResource:@"beep-7" ofType:@"wav"];
+        self.beepPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:beepPath] error:&err];
+        self.beepPlayer.volume = 0.4;
+        [self.beepPlayer prepareToPlay];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(applicationDidBecomeActive:)
@@ -201,19 +212,22 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
                                      forState:UIControlStateNormal];
     [self.instructionPlayAgainButton addTarget:self action:@selector(playVideo:) forControlEvents:UIControlEventTouchUpInside];
     [self.view insertSubview:self.instructionPlayAgainButton belowSubview:self.moviePlayer.view];
-
+    
+    
+    // layout
     
     [self.view nx_addConstraintToCenterViewHorizontally:self.moviePlayer.view];
-    [self.view nx_addConstraintForSameHeight:self.moviePlayer.view];
-    [self.view nx_addConstraintForSameWidth:self.moviePlayer.view];
+    [self.view nx_addVisualConstraints:(@[
+                                        @"H:[video(320)]",
+                                        @"V:[video(480)]"])
+                                 views:(@{@"video":self.moviePlayer.view})];
     [self.view addConstraintWhere:[self.moviePlayer.view constraintItemAttribute:NSLayoutAttributeBottom]
                   shouldBeEqualTo:[self.view constraintItemAttribute:NSLayoutAttributeBottom]];
     
     
     [self.view nx_addConstraintToCenterViewHorizontally:self.instructionImageView];
+    [self.view nx_addConstraintToCenterViewVertically:self.instructionImageView];
     [self.view nx_addConstraintForSameWidth:self.instructionImageView];
-    [self.view addConstraintWhere:[self.instructionImageView constraintItemAttribute:NSLayoutAttributeBottom]
-                  shouldBeEqualTo:[self.view constraintItemAttribute:NSLayoutAttributeBottom]];
     
     [self.view nx_addConstraintToCenterViewHorizontally:self.instructionPlayAgainButton];
     [self.view nx_addVisualConstraints:(@[@"V:[button(30)]-|",
@@ -227,7 +241,7 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
     self.blackView.backgroundColor = [UIColor blackColor];
     self.blackView.hidden = YES;
     [self.view addSubview:self.blackView];
-
+    
     CGFloat yOffset = IPAppIsRunningOnTallScreen() ? IPyOffsetTallScreen : IPyOffset;
     yOffset -= 20; // status bar adjustment
     yOffset += [[NSUserDefaults standardUserDefaults] floatForKey:IPInstaLabDebugExposureXAdjustDefaultsKey];
@@ -273,7 +287,7 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
 
 - (void)loadStateDidChange:(NSNotification *)notification;
 {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:IPInstaLabExposureInstructionVideoWasShownDefaultsKey]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:IPInstaLabExposureInstructionVideoWasShownDefaultsKey] == NO) {
         [self playVideo:nil];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:IPInstaLabExposureInstructionVideoWasShownDefaultsKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -285,6 +299,7 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
     MPMoviePlayerController *moviePlayer = self.moviePlayer;
     if (moviePlayer.playbackState == MPMoviePlaybackStatePaused) {
         self.moviePlayer.view.hidden = YES;
+        self.instructionPlayAgainButton.userInteractionEnabled = YES;
     }
 }
 
@@ -364,7 +379,7 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
 - (void)expose;
 {
     self.state = IPExposureStateExpose;
-
+    
     [self performSelector:@selector(exposeDone) withObject:nil afterDelay:self.exposureTime];
     
     // show Image
@@ -384,7 +399,7 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
     // flash the flash
     [self toggleFlash:NO fullBrightness:YES];
     [self toggleFlash:YES fullBrightness:YES];
-
+    
     [self.shutterPlayer play];
     
     double delayInSeconds = 0.2;
@@ -400,7 +415,7 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
     
     if (self.state == IPExposureStateWaiting) {
         [self faceUpDone];
-    } else {
+    } else if (self.state != IPExposureStateCanceled) {
         [self faceUpCancel];
     }
     
@@ -418,24 +433,37 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(preExpose)  object:nil];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(expose)     object:nil];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(exposeDone) object:nil];
-    
-    [self next];
 }
 
 - (void)faceUpDone;
 {
     self.state = IPExposureStateDone;
+    [self done];
 }
 
 - (void)faceUpCancel;
 {
     self.state = IPExposureStateCanceled;
+    [self cancel];
 }
 
-- (void)next;
+- (void)done;
 {
     IPExposureCompletedViewController *viewController = [[IPExposureCompletedViewController alloc] initWithFilmIdentifier:self.filmIdentifier];
     [self.navigationController pushViewController:viewController animated:NO];
+}
+
+- (void)cancel;
+{
+    // go straight to the beginning
+    [WCAlertView showAlertWithTitle:NSLocalizedString(@"Canceled", nil)
+                            message:NSLocalizedString(@"The exposure process was canceled", nil)
+                 customizationBlock:nil
+                    completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
+                        self.state = IPExposureStateInstructions;
+                    }
+                  cancelButtonTitle:NSLocalizedString(@"Try again", nil)
+                  otherButtonTitles:nil];
 }
 
 
@@ -445,7 +473,6 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
 {
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
-    // If torch supported, add button to toggle flashlight on/off
     if ([device hasTorch] == YES)
     {
         BOOL torchIsOn = (device.torchMode == AVCaptureTorchModeOn);
@@ -465,7 +492,16 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
             NSLog(@"Set Toch Mode Error: %@", [error localizedDescription]);
         }
         [device unlockForConfiguration];
+    } else {
+        if (self.isFlashOn == NO &&
+            onOff == YES &&
+            fullBrightness == NO) {
+            
+            [self.beepPlayer play];
+        }
     }
+    
+    self.isFlashOn = onOff;
 }
 
 
@@ -490,6 +526,7 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
 {
     if (self.moviePlayer.isPreparedToPlay) {
         self.moviePlayer.view.hidden = NO;
+        self.instructionPlayAgainButton.userInteractionEnabled = NO;
         self.moviePlayer.currentPlaybackTime = 0;
         [self.moviePlayer play];
     } else {
@@ -497,7 +534,7 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self.moviePlayer prepareToPlay];
     }
-
+    
 }
 
 @end

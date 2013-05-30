@@ -1,14 +1,13 @@
 //
 //  IPPhotoView.m
-//  Impossible
+//  IPInstantLab
 //
 //  Created by Max Winde on 24.04.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
-#import <BlocksKit/BlocksKit.h>
-
 #import "UIView+NXKit.h"
+#import <BlocksKit/BlocksKit.h>
 
 #import "UIColor+ImpossibleProject.h"
 #import "NXLayoutConstraintHelpers.h"
@@ -39,7 +38,7 @@
         self.topBar = [[UIView alloc] initWithFrame:CGRectZero];
         self.spacerView = [[UIView alloc] initWithFrame:CGRectZero];
         self.bottomBar = [[UIView alloc] initWithFrame:CGRectZero];
-
+        
         self.spacerView.backgroundColor = [UIColor clearColor];
         self.spacerView.opaque = NO;
         self.spacerView.userInteractionEnabled = NO;
@@ -114,7 +113,7 @@
         [self nx_addConstraintToCenterViewHorizontally:self.bottomBar];
         [self nx_addConstraintForSameWidth:self.topBar];
         [self nx_addConstraintForSameWidth:self.bottomBar];
-        [self nx_addVisualConstraint:@"V:[topBar][spacer][bottomBar]"
+        [self nx_addVisualConstraint:@"V:|[topBar][spacer][bottomBar]|"
                                views:(@{@"topBar": self.topBar,
                                       @"spacer": self.spacerView,
                                       @"bottomBar": self.bottomBar})];

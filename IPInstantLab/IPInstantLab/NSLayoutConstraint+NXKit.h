@@ -3,7 +3,7 @@
 //  NXExtensions
 //
 //  Created by Ullrich Schäfer on 05.04.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #if TARGET_OS_IPHONE

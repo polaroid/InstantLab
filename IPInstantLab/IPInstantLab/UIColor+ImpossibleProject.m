@@ -1,9 +1,9 @@
 //
 //  UIColor+ImpossibleProject.m
-//  Impossible
+//  IPInstantLab
 //
 //  Created by Max Winde on 12.04.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #import "UIColor_NXKit.h"
@@ -68,6 +68,11 @@
 + (UIColor *)ip_selectedTextColor;
 {
     return [UIColor nx_colorWithHexColor:0xc53d08];
+}
+
++ (UIColor *)ip_placeholderTextColor;
+{
+    return [UIColor nx_colorWithHexColor:0x7d7d7d];
 }
 
 + (UIColor *)ip_alertBackgroundColor;
@@ -141,6 +146,5 @@
 {
     return [UIColor nx_colorWithHexColor:0x8E2C16];
 }
-
 
 @end

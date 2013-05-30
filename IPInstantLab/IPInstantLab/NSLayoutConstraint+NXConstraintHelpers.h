@@ -1,9 +1,9 @@
 //
 //  NSLayoutConstraint+NXConstraintHelpers.h
-//  Impossible
+//  NXKit
 //
 //  Created by Max Winde on 25.04.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

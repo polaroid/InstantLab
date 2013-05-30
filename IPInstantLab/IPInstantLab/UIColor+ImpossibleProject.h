@@ -1,9 +1,9 @@
 //
 //  UIColor+ImpossibleProject.h
-//  Impossible
+//  IPInstantLab
 //
 //  Created by Max Winde on 12.04.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -20,6 +20,7 @@
 + (UIColor *)ip_textColor;
 + (UIColor *)ip_disabledTextColor;
 + (UIColor *)ip_selectedTextColor;
++ (UIColor *)ip_placeholderTextColor;
 
 + (UIColor *)ip_alertBackgroundColor;
 

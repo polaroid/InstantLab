@@ -1,9 +1,9 @@
 //
 //  IPGridView.m
-//  Impossible
+//  IPInstantLab
 //
 //  Created by Ullrich Schäfer on 12.03.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #import "IPGridView.h"
@@ -26,7 +26,11 @@
     CGRect bounds = self.bounds;
     [[UIColor whiteColor] setStroke];
     
+    CGFloat lineWidth = 1.0 / [[UIScreen mainScreen] scale];
+    
     CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    CGContextSetLineWidth(ctx, lineWidth);
     
     // vertical lines
     CGFloat x1 = CGRectGetMinX(bounds) + CGRectGetWidth(bounds) / 3;

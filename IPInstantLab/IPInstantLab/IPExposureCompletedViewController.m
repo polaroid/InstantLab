@@ -1,9 +1,9 @@
 //
 //  IPExposureCompletedViewController.m
-//  Impossible
+//  IPInstantLab
 //
 //  Created by Max Winde on 30.04.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #import "UIView+NXKit.h"
@@ -42,6 +42,8 @@
 
 - (void)viewDidLoad;
 {
+    self.view.backgroundColor = [UIColor ip_backgroundColor];
+    
     NSString *imageName = [NSString stringWithFormat:@"instantlab_screen6_clock-%@", (self.filmIdentifier ? self.filmIdentifier : @"custom")];
     self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     self.imageView.contentMode = UIViewContentModeCenter;

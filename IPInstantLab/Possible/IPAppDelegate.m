@@ -3,7 +3,7 @@
 //  IPInstantLab
 //
 //  Created by Tobias Kräntzer on 27.05.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 

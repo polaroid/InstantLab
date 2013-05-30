@@ -3,7 +3,7 @@
 //  NXKit
 //
 //  Created by Ullrich Schäfer on 07.12.10.
-//  Copyright 2010 nxtbgthng GmbH. All rights reserved.
+//  Copyright 2010 Impossible GmbH. All rights reserved.
 //
 
 #import <sys/types.h>

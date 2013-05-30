@@ -57,6 +57,15 @@
 		F603AF121753B6A0000E1A5E /* camera-shutter-click-08.wav in Resources */ = {isa = PBXBuildFile; fileRef = F603AF101753B6A0000E1A5E /* camera-shutter-click-08.wav */; };
 		F603AF131753B6A0000E1A5E /* InstaLabFilms.plist in Resources */ = {isa = PBXBuildFile; fileRef = F603AF111753B6A0000E1A5E /* InstaLabFilms.plist */; };
 		F603AF161753B71A000E1A5E /* IPAppereance.m in Sources */ = {isa = PBXBuildFile; fileRef = F603AF151753B71A000E1A5E /* IPAppereance.m */; };
+		F61B25FE175653780088AE78 /* ALAssetsLibrary+Impossible.m in Sources */ = {isa = PBXBuildFile; fileRef = F61B25FD175653780088AE78 /* ALAssetsLibrary+Impossible.m */; };
+		F61B2601175653C10088AE78 /* UIImage+Impossible.m in Sources */ = {isa = PBXBuildFile; fileRef = F61B2600175653C10088AE78 /* UIImage+Impossible.m */; };
+		F61B2603175654820088AE78 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61B2602175654820088AE78 /* ImageIO.framework */; };
+		F61B2605175654D90088AE78 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61B2604175654D90088AE78 /* MobileCoreServices.framework */; };
+		F61B2607175655300088AE78 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61B2606175655300088AE78 /* AssetsLibrary.framework */; };
+		F61B26091756560A0088AE78 /* beep-7.wav in Resources */ = {isa = PBXBuildFile; fileRef = F61B26081756560A0088AE78 /* beep-7.wav */; };
+		F62B698D1755F86500F42175 /* GoodMobiPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F62B698B1755F86500F42175 /* GoodMobiPro-Bold.ttf */; };
+		F62B698E1755F86500F42175 /* GoodMobiPro-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F62B698C1755F86500F42175 /* GoodMobiPro-Book.ttf */; };
+		F62B69911755FBC100F42175 /* IPResetButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F62B69901755FBC100F42175 /* IPResetButton.m */; };
 		F65D247B1754D21000EA8FFD /* NXConstraintItemAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = F65D24751754D21000EA8FFD /* NXConstraintItemAttribute.m */; };
 		F65D247C1754D21000EA8FFD /* UIView+NXConstraintHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = F65D24771754D21000EA8FFD /* UIView+NXConstraintHelpers.m */; };
 		F65D247D1754D21000EA8FFD /* NSLayoutConstraint+NXConstraintHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = F65D24791754D21000EA8FFD /* NSLayoutConstraint+NXConstraintHelpers.m */; };
@@ -67,7 +76,7 @@
 		F65D24941754D65800EA8FFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F65D248E1754D65800EA8FFD /* main.m */; };
 		F65D249A1754D9DB00EA8FFD /* app-icon-57px.png in Resources */ = {isa = PBXBuildFile; fileRef = F65D24991754D9DB00EA8FFD /* app-icon-57px.png */; };
 		F65D249C1754D9DF00EA8FFD /* app-icon-114px.png in Resources */ = {isa = PBXBuildFile; fileRef = F65D249B1754D9DF00EA8FFD /* app-icon-114px.png */; };
-		F69804DC17549588007582DC /* IPResetButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F69804DB17549588007582DC /* IPResetButton.m */; };
+		F65D249E1754DD4400EA8FFD /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65D249D1754DD4400EA8FFD /* CoreText.framework */; };
 		F69804DF17549592007582DC /* IPShutterView.m in Sources */ = {isa = PBXBuildFile; fileRef = F69804DE17549592007582DC /* IPShutterView.m */; };
 		F69804E3175495F6007582DC /* instantlab_icon-back_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = F69804E1175495F6007582DC /* instantlab_icon-back_inactive.png */; };
 		F69804E4175495F6007582DC /* instantlab_icon-back_inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F69804E2175495F6007582DC /* instantlab_icon-back_inactive@2x.png */; };
@@ -193,6 +202,18 @@
 		F603AF111753B6A0000E1A5E /* InstaLabFilms.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InstaLabFilms.plist; sourceTree = "<group>"; };
 		F603AF141753B719000E1A5E /* IPAppereance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAppereance.h; sourceTree = "<group>"; };
 		F603AF151753B71A000E1A5E /* IPAppereance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPAppereance.m; sourceTree = "<group>"; };
+		F61B25FC175653780088AE78 /* ALAssetsLibrary+Impossible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+Impossible.h"; sourceTree = "<group>"; };
+		F61B25FD175653780088AE78 /* ALAssetsLibrary+Impossible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+Impossible.m"; sourceTree = "<group>"; };
+		F61B25FF175653C10088AE78 /* UIImage+Impossible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Impossible.h"; sourceTree = "<group>"; };
+		F61B2600175653C10088AE78 /* UIImage+Impossible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Impossible.m"; sourceTree = "<group>"; };
+		F61B2602175654820088AE78 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		F61B2604175654D90088AE78 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F61B2606175655300088AE78 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		F61B26081756560A0088AE78 /* beep-7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "beep-7.wav"; sourceTree = "<group>"; };
+		F62B698B1755F86500F42175 /* GoodMobiPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GoodMobiPro-Bold.ttf"; sourceTree = "<group>"; };
+		F62B698C1755F86500F42175 /* GoodMobiPro-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GoodMobiPro-Book.ttf"; sourceTree = "<group>"; };
+		F62B698F1755FBC100F42175 /* IPResetButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPResetButton.h; sourceTree = "<group>"; };
+		F62B69901755FBC100F42175 /* IPResetButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPResetButton.m; sourceTree = "<group>"; };
 		F65D24741754D21000EA8FFD /* NXConstraintItemAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXConstraintItemAttribute.h; sourceTree = "<group>"; };
 		F65D24751754D21000EA8FFD /* NXConstraintItemAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXConstraintItemAttribute.m; sourceTree = "<group>"; };
 		F65D24761754D21000EA8FFD /* UIView+NXConstraintHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NXConstraintHelpers.h"; sourceTree = "<group>"; };
@@ -209,8 +230,7 @@
 		F65D248E1754D65800EA8FFD /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F65D24991754D9DB00EA8FFD /* app-icon-57px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "app-icon-57px.png"; path = "../app-icon-57px.png"; sourceTree = "<group>"; };
 		F65D249B1754D9DF00EA8FFD /* app-icon-114px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "app-icon-114px.png"; path = "../app-icon-114px.png"; sourceTree = "<group>"; };
-		F69804DA17549588007582DC /* IPResetButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPResetButton.h; sourceTree = "<group>"; };
-		F69804DB17549588007582DC /* IPResetButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPResetButton.m; sourceTree = "<group>"; };
+		F65D249D1754DD4400EA8FFD /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		F69804DD17549592007582DC /* IPShutterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPShutterView.h; sourceTree = "<group>"; };
 		F69804DE17549592007582DC /* IPShutterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPShutterView.m; sourceTree = "<group>"; };
 		F69804E1175495F6007582DC /* instantlab_icon-back_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instantlab_icon-back_inactive.png"; sourceTree = "<group>"; };
@@ -278,6 +298,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F61B2607175655300088AE78 /* AssetsLibrary.framework in Frameworks */,
+				F61B2605175654D90088AE78 /* MobileCoreServices.framework in Frameworks */,
+				F61B2603175654820088AE78 /* ImageIO.framework in Frameworks */,
+				F65D249E1754DD4400EA8FFD /* CoreText.framework in Frameworks */,
 				F603AECF1753B1A6000E1A5E /* CoreImage.framework in Frameworks */,
 				F603AEC31753B078000E1A5E /* CoreMotion.framework in Frameworks */,
 				F603AEC11753B060000E1A5E /* MediaPlayer.framework in Frameworks */,
@@ -314,6 +338,10 @@
 		F603AE671753A857000E1A5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F61B2606175655300088AE78 /* AssetsLibrary.framework */,
+				F61B2604175654D90088AE78 /* MobileCoreServices.framework */,
+				F61B2602175654820088AE78 /* ImageIO.framework */,
+				F65D249D1754DD4400EA8FFD /* CoreText.framework */,
 				F603AECE1753B1A5000E1A5E /* CoreImage.framework */,
 				F603AEC21753B077000E1A5E /* CoreMotion.framework */,
 				F603AEC01753B060000E1A5E /* MediaPlayer.framework */,
@@ -346,8 +374,8 @@
 				F603AE781753A857000E1A5E /* IPAppDelegate.m */,
 				F69805201754AA27007582DC /* IPDemoViewController.h */,
 				F69805211754AA27007582DC /* IPDemoViewController.m */,
-				F65D24851754D63B00EA8FFD /* Supporting Files */,
 				F65D247E1754D52400EA8FFD /* Resources */,
+				F65D24851754D63B00EA8FFD /* Supporting Files */,
 			);
 			name = "Demo App";
 			path = Possible;
@@ -393,6 +421,10 @@
 				F603AF0B1753B634000E1A5E /* UIView+Constraints.m */,
 				F603AF0D1753B65C000E1A5E /* UIView+ImpossibleProject.h */,
 				F603AF0E1753B65C000E1A5E /* UIView+ImpossibleProject.m */,
+				F61B25FC175653780088AE78 /* ALAssetsLibrary+Impossible.h */,
+				F61B25FD175653780088AE78 /* ALAssetsLibrary+Impossible.m */,
+				F61B25FF175653C10088AE78 /* UIImage+Impossible.h */,
+				F61B2600175653C10088AE78 /* UIImage+Impossible.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -413,14 +445,14 @@
 		F603AE911753AE6F000E1A5E /* Exposure */ = {
 			isa = PBXGroup;
 			children = (
+				F62B698F1755FBC100F42175 /* IPResetButton.h */,
+				F62B69901755FBC100F42175 /* IPResetButton.m */,
 				F603AED31753B1DF000E1A5E /* IPPhotoFrameView.h */,
 				F603AED41753B1DF000E1A5E /* IPPhotoFrameView.m */,
 				F603AE921753AE7D000E1A5E /* IPExposureButtonAreaView.h */,
 				F603AE931753AE7D000E1A5E /* IPExposureButtonAreaView.m */,
 				F603AED91753B299000E1A5E /* IPGridView.h */,
 				F603AEDA1753B299000E1A5E /* IPGridView.m */,
-				F69804DA17549588007582DC /* IPResetButton.h */,
-				F69804DB17549588007582DC /* IPResetButton.m */,
 				F69804DD17549592007582DC /* IPShutterView.h */,
 				F69804DE17549592007582DC /* IPShutterView.m */,
 			);
@@ -448,6 +480,7 @@
 		F603AEDE1753B4B4000E1A5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F61B26081756560A0088AE78 /* beep-7.wav */,
 				F603AF101753B6A0000E1A5E /* camera-shutter-click-08.wav */,
 				F603AF111753B6A0000E1A5E /* InstaLabFilms.plist */,
 				F6F3F7D81753B7C200A6ECD6 /* Fonts */,
@@ -625,6 +658,8 @@
 		F6F3F7D81753B7C200A6ECD6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				F62B698B1755F86500F42175 /* GoodMobiPro-Bold.ttf */,
+				F62B698C1755F86500F42175 /* GoodMobiPro-Book.ttf */,
 				F6F3F7D41753B7BF00A6ECD6 /* GoodMobiPro-CondBold.ttf */,
 				F6F3F7D51753B7BF00A6ECD6 /* GoodMobiPro-CondBook.ttf */,
 			);
@@ -688,7 +723,7 @@
 			attributes = {
 				CLASSPREFIX = IP;
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "nxtbgthng GmbH";
+				ORGANIZATIONNAME = "Impossible GmbH";
 			};
 			buildConfigurationList = F603AE601753A857000E1A5E /* Build configuration list for PBXProject "IPInstantLab" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -781,6 +816,9 @@
 				F65D24921754D65800EA8FFD /* InfoPlist.strings in Resources */,
 				F65D249A1754D9DB00EA8FFD /* app-icon-57px.png in Resources */,
 				F65D249C1754D9DF00EA8FFD /* app-icon-114px.png in Resources */,
+				F62B698D1755F86500F42175 /* GoodMobiPro-Bold.ttf in Resources */,
+				F62B698E1755F86500F42175 /* GoodMobiPro-Book.ttf in Resources */,
+				F61B26091756560A0088AE78 /* beep-7.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -841,7 +879,6 @@
 				F603AF0C1753B634000E1A5E /* UIView+Constraints.m in Sources */,
 				F603AF0F1753B65C000E1A5E /* UIView+ImpossibleProject.m in Sources */,
 				F603AF161753B71A000E1A5E /* IPAppereance.m in Sources */,
-				F69804DC17549588007582DC /* IPResetButton.m in Sources */,
 				F69804DF17549592007582DC /* IPShutterView.m in Sources */,
 				F698051217549703007582DC /* IPNavigationController.m in Sources */,
 				F69805221754AA27007582DC /* IPDemoViewController.m in Sources */,
@@ -856,6 +893,9 @@
 				F65D247C1754D21000EA8FFD /* UIView+NXConstraintHelpers.m in Sources */,
 				F65D247D1754D21000EA8FFD /* NSLayoutConstraint+NXConstraintHelpers.m in Sources */,
 				F65D24941754D65800EA8FFD /* main.m in Sources */,
+				F62B69911755FBC100F42175 /* IPResetButton.m in Sources */,
+				F61B25FE175653780088AE78 /* ALAssetsLibrary+Impossible.m in Sources */,
+				F61B2601175653C10088AE78 /* UIImage+Impossible.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

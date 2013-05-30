@@ -3,7 +3,7 @@
 //  NXKit
 //
 //  Created by Gernot Poetsch on 11.12.10.
-//  Copyright 2010 nxtbgthng GmbH. All rights reserved.
+//  Copyright 2010 Impossible GmbH. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

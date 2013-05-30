@@ -2,7 +2,7 @@
 //  UIView+NXKit.m
 //
 //  Created by Ullrich Schäfer on 28.04.09.
-//  Copyright 2009 nxtbgthng GmbH. All rights reserved.
+//  Copyright 2009 Impossible GmbH. All rights reserved.
 //
 
 #import "NSLayoutConstraint+NXKit.h"

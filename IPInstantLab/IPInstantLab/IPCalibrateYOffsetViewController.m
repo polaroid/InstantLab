@@ -1,9 +1,9 @@
 //
 //  IPCalibrateYOffsetViewController.m
-//  Impossible
+//  IPInstantLab
 //
 //  Created by Ullrich Schäfer on 18.03.13.
-//  Copyright (c) 2013 nxtbgthng GmbH. All rights reserved.
+//  Copyright (c) 2013 Impossible GmbH. All rights reserved.
 //
 
 #import <BlocksKit/BlocksKit.h>

@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_BlocksKit 8
 #define COCOAPODS_VERSION_PATCH_BlocksKit 2
 
+// ObjcAssociatedObjectHelpers
+#define COCOAPODS_POD_AVAILABLE_ObjcAssociatedObjectHelpers
+#define COCOAPODS_VERSION_MAJOR_ObjcAssociatedObjectHelpers 1
+#define COCOAPODS_VERSION_MINOR_ObjcAssociatedObjectHelpers 1
+#define COCOAPODS_VERSION_PATCH_ObjcAssociatedObjectHelpers 1
+
 // WCAlertView
 #define COCOAPODS_POD_AVAILABLE_WCAlertView
 #define COCOAPODS_VERSION_MAJOR_WCAlertView 1

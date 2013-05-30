@@ -2,15 +2,18 @@ PODS:
   - BlocksKit (1.8.2):
     - libffi
   - libffi (3.0.11)
+  - ObjcAssociatedObjectHelpers (1.1.1)
   - WCAlertView (1.0.1)
 
 DEPENDENCIES:
   - BlocksKit
+  - ObjcAssociatedObjectHelpers
   - WCAlertView
 
 SPEC CHECKSUMS:
   BlocksKit: 7396526b0816734103f6133fbb1a520c8b04e80c
   libffi: 8a1d9ba43c0c84b546b42c6f742714e73aa07ae1
+  ObjcAssociatedObjectHelpers: 09851c8c194dd1c00ca4424a006561a1bbb196c6
   WCAlertView: 940e47509875d85cc42abedafc41d310007f9174
 
 COCOAPODS: 0.20.2
