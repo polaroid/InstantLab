@@ -221,8 +221,11 @@ typedef NS_ENUM(NSInteger, IPExposureState) {
                                         @"H:[video(320)]",
                                         @"V:[video(480)]"])
                                  views:(@{@"video":self.moviePlayer.view})];
-    [self.view addConstraintWhere:[self.moviePlayer.view constraintItemAttribute:NSLayoutAttributeBottom]
-                  shouldBeEqualTo:[self.view constraintItemAttribute:NSLayoutAttributeBottom]];
+    [self.view nx_addVisualConstraint:(IPAppIsRunningOnTallScreen() ? @"V:[image]-(25)-[button]" : @"V:[image][button]")
+                                views:(@{
+                                       @"button": self.instructionPlayAgainButton,
+                                       @"image": self.instructionImageView})];
+
     
     
     [self.view nx_addConstraintToCenterViewHorizontally:self.instructionImageView];
