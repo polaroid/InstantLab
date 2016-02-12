@@ -7,7 +7,7 @@ This framework only runs on **iPhone** and **iPod touch** with **iOS 6** and lat
 
 ## Usage
 
-- Integrate the framework into your project via cocoa pods by adding the following line into you Podfile.
+- Integrate the framework into your project via CocoaPods by adding the following line into you Podfile.
 
     ```
     pod 'InstantLab'
